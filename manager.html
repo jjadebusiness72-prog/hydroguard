@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manager dashboard – HydroGuard</title>
+  <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+  <meta name="description" content="Nurse Unit Manager dashboard: risk across the home, live locations, alert response, UTI watch, staffing and reports. Demo only.">
+  <link rel="stylesheet" href="assets/css/hydroguard.css">
+  <link rel="stylesheet" href="assets/css/manager.css">
+</head>
+<body>
+  <main class="wrap mgr" id="main">
+    <div class="mgr-head">
+      <h1>Kurrajong Gardens today</h1>
+      <p class="small muted" id="who">Leanne Ward, Nurse Unit Manager</p>
+    </div>
+
+    <div class="mgr-grid">
+      <!-- 1. Overview -->
+      <section class="section m-overview" id="overview" aria-labelledby="ov-h">
+        <div class="section-head"><h2 id="ov-h">Home overview</h2><span class="small muted" id="ov-time"></span></div>
+        <div class="block ov-block" id="ov-block"></div>
+        <div class="ruled ov-rows" id="ov-rows"></div>
+      </section>
+
+      <!-- 2. Live map -->
+      <section class="section m-map" id="map" aria-labelledby="map-h">
+        <div class="section-head">
+          <h2 id="map-h">Where residents are</h2>
+          <div class="live" id="live">
+            <span class="live-dot" aria-hidden="true"></span><strong>Live</strong>
+            <span class="small muted" id="live-ago">updated 5 sec ago</span>
+            <button type="button" class="btn ghost live-toggle" id="live-toggle" aria-pressed="false">Pause</button>
+          </div>
+        </div>
+        <div class="plan" id="plan">
+          <div class="plan-svg" id="plan-svg" aria-hidden="true"></div>
+          <div class="plan-dots" id="plan-dots"></div>
+          <div class="pop" id="pop" role="dialog" aria-labelledby="pop-name" hidden></div>
+        </div>
+        <p class="xs muted map-key">Each resident is ringed in their risk colour:
+          <span class="chip high">High risk</span> <span class="chip watch">Watch</span> <span class="chip low">Low risk</span>
+          <span>Tap a resident for details.</span></p>
+        <div class="map-lower">
+          <div>
+            <h3 class="sub-h">By location</h3>
+            <div class="ruled loc-list" id="loc-list"></div>
+          </div>
+          <div>
+            <h3 class="sub-h">Door access</h3>
+            <div class="ruled door-feed" id="door-feed"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Alerts -->
+      <section class="section m-alerts" id="alerts" aria-labelledby="al-h">
+        <div class="section-head"><h2 id="al-h">Alert response</h2><span class="small muted">Last 12 hours</span></div>
+        <div class="al-stats" id="al-stats"></div>
+        <div class="table-scroll"><table class="table al-table" id="al-table"></table></div>
+        <h3 class="sub-h">Alerts by day, last 14 days</h3>
+        <div class="al-chart" id="al-chart"></div>
+        <p class="xs muted al-legend"><span class="key high"></span>High risk <span class="key watch"></span>Watch</p>
+      </section>
+
+      <!-- 4. UTI watch -->
+      <section class="section m-uti" id="uti" aria-labelledby="uti-h">
+        <div class="section-head"><h2 id="uti-h">UTI watch</h2></div>
+        <p class="small muted">Residents whose temperature is rising while hydration falls and night bathroom visits go up.</p>
+        <div class="ruled uti-list" id="uti-list"></div>
+      </section>
+
+      <!-- 5. Staffing -->
+      <section class="section m-staff" id="staff" aria-labelledby="st-h">
+        <div class="section-head"><h2 id="st-h">On shift now</h2><span class="small muted" id="shift-text"></span></div>
+        <div class="ruled staff-list" id="staff-list"></div>
+      </section>
+
+      <!-- 6. Reports -->
+      <section class="section m-reports" id="reports" aria-labelledby="rp-h">
+        <div class="section-head"><h2 id="rp-h">Reports</h2>
+          <button type="button" class="btn secondary" id="print-btn"></button>
+        </div>
+        <div class="ruled report-list" id="report-list"></div>
+      </section>
+    </div>
+
+    <!-- Printed only -->
+    <section class="print-summary" id="print-summary" aria-hidden="true"></section>
+  </main>
+
+  <script src="assets/js/scoring.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/manager.js"></script>
+</body>
+</html>

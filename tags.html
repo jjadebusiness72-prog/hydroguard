@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Set up NFC tags – HydroGuard</title>
+  <meta name="description" content="Every HydroGuard demo link, with a QR code and copy button, ready to write to NFC tags. Demo only.">
+  <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/hydroguard.css">
+  <link rel="stylesheet" href="assets/css/hub.css">
+</head>
+<body>
+  <main class="wrap tags" id="main">
+    <div class="tags-head">
+      <a class="btn ghost back no-print" href="index.html"><span data-icon="back"></span>Demo home</a>
+      <h1>Set up NFC tags</h1>
+      <p class="muted">Each tag holds one web link. When someone taps their phone on the tag, that page opens. Write a resident’s profile link to a sticker on their wristband, and a door link to a sticker on their door reader.</p>
+    </div>
+
+    <section class="block light base-box no-print" aria-labelledby="base-h">
+      <h2 id="base-h" class="base-title">Your site address</h2>
+      <form class="base-form" id="base-form">
+        <label class="visually-hidden" for="base-url">Your site address</label>
+        <input class="input" id="base-url" type="text" inputmode="url" autocapitalize="off" autocomplete="off" spellcheck="false" required>
+        <button class="btn" type="submit">Save address</button>
+        <button class="btn secondary" type="button" id="base-reset">Use this page’s address</button>
+      </form>
+      <p class="small base-hint" id="base-hint"></p>
+    </section>
+
+    <div class="grid-2 howto no-print">
+      <section aria-labelledby="how-h">
+        <h2 id="how-h" class="sub-h">How to write a tag</h2>
+        <ol class="steps small">
+          <li>Install the free <strong>NXP TagWriter</strong> or <strong>NFC Tools</strong> app on your phone.</li>
+          <li>Below, press <strong>Copy link</strong> for the tag you want.</li>
+          <li>In the app, choose <strong>Write</strong>, then <strong>Add a record</strong>, then <strong>URL</strong>.</li>
+          <li>Paste the link and save the record.</li>
+          <li>Press <strong>Write</strong> and hold the top of your phone flat on the tag until it says done.</li>
+        </ol>
+      </section>
+      <section aria-labelledby="phone-h">
+        <h2 id="phone-h" class="sub-h">Reading a tag</h2>
+        <ul class="notes ruled small">
+          <li><strong>iPhone (XS and later):</strong> no app needed. Hold the top of the phone near the tag with the screen on, even on the lock screen. Tap the banner that appears.</li>
+          <li><strong>Android:</strong> turn on NFC in Settings (search “NFC”). Hold the middle of the back of the phone near the tag.</li>
+          <li><strong>No NFC?</strong> Point the phone camera at the QR code next to each link instead.</li>
+          <li><strong>Which tags?</strong> NTAG213 or NTAG215 stickers, cards or wristbands. They’re cheap online and hold a link easily.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="tags-toolbar no-print">
+      <div class="seg" id="tag-filter" role="group" aria-label="Show tags for"></div>
+      <button class="btn" type="button" id="print-btn"><span data-icon="print"></span>Print tag sheet</button>
+    </div>
+
+    <div id="tag-groups"></div>
+
+    <p class="small muted no-print qr-note" id="qr-note" hidden>QR codes need an internet connection the first time this page loads. The links still work without them.</p>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="assets/js/scoring.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/tags.js"></script>
+</body>
+</html>

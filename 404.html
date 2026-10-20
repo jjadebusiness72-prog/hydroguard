@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found – HydroGuard</title>
+  <script>
+    // GitHub Pages serves this page for any missing address, even deep ones like /hydroguard-demo/a/b.
+    // Point relative links back at the site's root folder so styles and links still work.
+    (function () {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var root = /\.github\.io$/i.test(location.hostname) && parts.length ? '/' + parts[0] + '/' : null;
+      if (root && parts[0].indexOf('.') !== -1) root = '/'; // user site (name.github.io) with a missing file at the top
+      if (root) document.write('<base href="' + root + '">');
+    })();
+  </script>
+  <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/hydroguard.css">
+  <link rel="stylesheet" href="assets/css/hub.css">
+  <style>
+    .nf { padding-top: var(--s5); padding-bottom: var(--s5); }
+    .nf h1 { font-size: var(--fs-2xl); margin-bottom: var(--s3); }
+    .nf .row { flex-wrap: wrap; margin-top: var(--s4); }
+  </style>
+</head>
+<body>
+  <main class="wrap nf" id="main">
+    <h1>Page not found</h1>
+    <p>We couldn’t find that page. The link may have a typo, or the page may have moved.</p>
+    <p class="muted small">If you got here by tapping an NFC tag, the tag may hold an old address. Open the tag set-up page on the live site and write the tag again.</p>
+    <div class="row">
+      <a class="btn" href="index.html">Go to the demo home</a>
+      <a class="btn secondary" href="tags.html">Set up NFC tags</a>
+    </div>
+  </main>
+  <script src="assets/js/scoring.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script>HG.mountHeader({ context: 'Page not found' }); HG.demoNote();</script>
+</body>
+</html>
