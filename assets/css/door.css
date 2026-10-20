@@ -1,0 +1,68 @@
+/* Door reader (door.html). One orchestrated moment: reading → unlocked → relock. */
+
+.door-main { max-width: 640px; padding-top: var(--s3); }
+.door-note {
+  margin: 0 0 var(--s3); padding: var(--s2) var(--s3); max-width: none;
+  background: var(--me-bg); color: var(--me-ink); border-radius: var(--radius-sm);
+}
+
+.door-reader { padding: var(--s4) var(--s4) var(--s4); transition: background-color .35s ease; }
+.door-reader[data-state="reading"], .door-reader[data-state="locked"] { background: var(--navy); }
+.door-reader[data-state="unlocked"] { background: var(--moss-800); }
+.door-reader[data-state="refused"] { background: var(--coral-800); }
+:root[data-theme="dark"] .door-reader[data-state="reading"],
+:root[data-theme="dark"] .door-reader[data-state="locked"] { background: var(--aqua-800); }
+
+.door-top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s3); }
+.door-reader p { margin: 0; }
+.door-room-label { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.75); }
+.door-room { font-size: 7.5rem; line-height: 0.9; letter-spacing: -0.04em; margin: 2px 0 6px; }
+.door-wing { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.8); }
+
+.door-icon {
+  position: relative; width: 84px; height: 84px; flex: none; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+.door-icon svg { width: 40px; height: 40px; }
+.door-icon.pop svg { animation: door-pop .35s ease-out; }
+.door-reader[data-state="reading"] .door-icon svg { animation: door-read 1.2s ease-in-out infinite; }
+.door-reader[data-state="unlocked"] .door-icon { background: var(--moss-500); border-color: var(--moss-200); color: #fff; }
+.door-reader[data-state="unlocked"] .door-icon::before,
+.door-reader[data-state="unlocked"] .door-icon::after {
+  content: ""; position: absolute; inset: -1px; border-radius: 50%;
+  border: 2px solid var(--moss-200); animation: door-pulse 1.8s ease-out 3; opacity: 0;
+}
+.door-reader[data-state="unlocked"] .door-icon::after { animation-delay: .6s; }
+.door-reader[data-state="refused"] .door-icon { background: var(--coral-400); border-color: var(--coral-200); color: var(--coral-800); }
+
+.door-status { font: 300 var(--fs-xl)/1.15 var(--serif); margin-top: var(--s4) !important; }
+.door-reader[data-state="refused"] .door-status { color: var(--coral-200); }
+.door-sub { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.85); margin-top: 4px !important; min-height: 1.45em; }
+
+@keyframes door-pulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
+@keyframes door-pop { 0% { transform: scale(.7); } 70% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes door-read { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) {
+  .door-reader, .door-icon svg { transition: none; animation: none !important; }
+  .door-reader[data-state] .door-icon::before, .door-reader[data-state] .door-icon::after { display: none; }
+}
+
+.door-who { display: flex; gap: var(--s3); align-items: center; padding: var(--s3) 0; }
+.door-who p { margin: 0; }
+.door-name { font: 400 var(--fs-lg)/1.2 var(--serif); }
+.door-name .muted { font: 400 var(--fs-sm) var(--sans); }
+
+.door-actions { display: flex; flex-wrap: wrap; gap: var(--s2); padding-bottom: var(--s4); }
+.door-actions .btn svg { width: 18px; height: 18px; }
+@media (max-width: 479px) { .door-actions .btn { flex: 1 1 100%; } }
+
+.door-log { list-style: none; margin: 0; padding: 0; font-size: var(--fs-sm); }
+.door-log li { display: grid; grid-template-columns: 7.5em 1fr; gap: var(--s2); align-items: baseline; }
+.log-what { display: flex; flex-wrap: wrap; gap: 4px var(--s2); align-items: baseline; }
+.log-time { color: var(--ink-2); }
+
+@media (min-width: 900px) {
+  .door-main { padding-top: var(--s5); }
+  .door-room { font-size: 10rem; }
+}
